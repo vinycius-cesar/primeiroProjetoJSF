@@ -9,19 +9,19 @@
 
 <h:body>
 
-	<h:form>
-	   Nome:
-	   <h:inputText id="campoNome" value="#{pessoaBean.nome}" />
-		<br />
-
-		<h:commandButton binding="#{pessoaBean.commandButton}" value="botão" action="#{pessoaBean.addNome}" />
-
-		<h:dataTable value="#{pessoaBean.nomes}" var="nome">
-			<h:column>
-				<h:outputText value="#{nome}" />
-			</h:column>
-
-		</h:dataTable>
+	<h:form id="formPessoa">
+	  <h:outputLabel value="Nome: "/>
+	  <h:inputText value="#{pessoaBean.pessoa.nome}"/>
+	  
+	  <h:outputLabel value="Sobrenome: "/>
+	  <h:inputText value="#{pessoaBean.pessoa.sobrenome}"/>
+	  
+	  <h:outputLabel value="idade: "/>
+	  <h:inputText value="#{pessoaBean.pessoa.idade}"/>
+	  
+	  
+	  
+	  <h:commandButton value="Salvar" action="#{pessoaBean.salvar}"/>
 
 	</h:form>
 

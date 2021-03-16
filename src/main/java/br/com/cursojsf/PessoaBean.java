@@ -10,69 +10,35 @@ import javax.faces.bean.SessionScoped;
 import javax.faces.bean.ViewScoped;
 import javax.faces.component.html.HtmlCommandButton;
 
+import br.com.dao.DaoGeneric;
+import br.com.entidades.Pessoa;
+
 @ManagedBean(name = "pessoaBean")
 @ViewScoped
 public class PessoaBean {
-	private String nome;
-	private String sobrenome;
-	private String nomeCompleto;
-	private HtmlCommandButton commandButton;
 	
-	public HtmlCommandButton getCommandButton() {
-		return commandButton;
-	}
+	private Pessoa pessoa = new Pessoa ();
+	private DaoGeneric<Pessoa> daoGeneric = new DaoGeneric<Pessoa>();
 	
-	public void setCommandButton(HtmlCommandButton commandButton) {
-		this.commandButton = commandButton;
+	public String salvar() {
+		daoGeneric.salvar(pessoa);
+		
+		return " ";
 	}
 
-	private List<String> nomes = new ArrayList<String>();
-	
-	public String addNome() {
-		nomes.add(nome);
-		if(nomes.size() > 3) {
-		  commandButton.setDisabled(true);	
-		}
-		return "";
-	
-	}
-	
-	
-
-	public List<String> getNomes() {
-		return nomes;
+	public Pessoa getPessoa() {
+		return pessoa;
 	}
 
-
-
-	public void setNomes(List<String> nomes) {
-		this.nomes = nomes;
+	public void setPessoa(Pessoa pessoa) {
+		this.pessoa = pessoa;
 	}
 
-
-
-	public String getNomeCompleto() {
-		return nomeCompleto;
+	public DaoGeneric<Pessoa> getDaoGeneric() {
+		return daoGeneric;
 	}
 
-	public void setNomeCompleto(String nomeCompleto) {
-		this.nomeCompleto = nomeCompleto;
+	public void setDaoGeneric(DaoGeneric<Pessoa> daoGeneric) {
+		this.daoGeneric = daoGeneric;
 	}
-
-	public String getNome() {
-		return nome;
-	}
-
-	public void setNome(String nome) {
-		this.nome = nome;
-	}
-
-	public String getSobrenome() {
-		return sobrenome;
-	}
-
-	public void setSobrenome(String sobrenome) {
-		this.sobrenome = sobrenome;
-	}
-
 }
